@@ -6,7 +6,7 @@ locals {
   ubuntu-ami-id                = {}   # AMI needs to be in the same region, can be found in AMI Catalog in AWS
   ec2-instance-type            = {}
   ec2-termination-protection   = true
-  ec2-cpu-credits              = "unlimited"
+  ec2-cpu-credits              = "Unlimited"
   ec2-key-name                 = {}
   ec2-public-ip-flag           = true
   ec2-root-volume-size         = 30
