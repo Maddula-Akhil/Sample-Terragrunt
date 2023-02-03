@@ -11,16 +11,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
+      - name: Use nodejs 
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
+          cache: 'npm'
       - name: Npm Install
         run: npm ci --force
         
       - name: Build
-        run: npm run build-prod    
+        run: npm run build-prod
+      - name: Test 
+        run: npm test
+      - name: Install dependencies
+        run: npm install
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
