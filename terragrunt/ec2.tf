@@ -1,4 +1,4 @@
-#variable
+# Variables
 
 variable "ami" {
   type    = string
@@ -17,7 +17,7 @@ variable "key_name" {
 
 variable "instance_name" {
   type    = string
-  default = "my-ec2-instance"
+  default = "ec2-instance"
 }
 
 variable "volume_size" {
@@ -25,14 +25,34 @@ variable "volume_size" {
   default = 8
 }
 
-#resource
+variable "ingress_rules" {
+  type    = list(object({
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    cidr_blocks = list(string)
+  }))
+  default = [
+    {
+      from_port   = 22
+      to_port     = 22
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  ]
+}
 
-resource "aws_instance" "my_ec2_instance" {
+
+# Resources
+
+# ec2 instances
+
+resource "aws_instance" "ec2_instance" {
   ami           = var.ami
   instance_type = var.instance_type
   #key_name      = var.key_name
 
-  vpc_security_group_ids = [aws_security_group.my_sg.id]
+  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
   subnet_id              = aws_subnet.public_a.id
 
   root_block_device {
@@ -44,16 +64,21 @@ resource "aws_instance" "my_ec2_instance" {
   }
 }
 
-resource "aws_security_group" "my_sg" {
-  name        = "my-ec2-instance-Sg"
-  description = "Security Group for my_ec2_instance"
+# ec2 security group
+
+resource "aws_security_group" "ec2_sg" {
+  name        = "ec2-instance-Sg"
+  description = "Security Group for ec2_instance"
   vpc_id      = aws_vpc.primary_vpc.id
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    content {
+      from_port   = ingress.value.from_port
+      to_port     = ingress.value.to_port
+      protocol    = ingress.value.protocol
+      cidr_blocks = ingress.value.cidr_blocks
+    }
   }
 
   egress {
