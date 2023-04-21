@@ -30,12 +30,12 @@ variable "db_name" {
 
 variable "db_username" {
   type    = string
-  default = "admin"
+  default = ""
 }
 
 variable "db_password" {
   type    = string
-  default = "password"
+  default = ""
 }
 
 variable "db_multi_az" {
