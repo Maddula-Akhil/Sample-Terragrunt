@@ -30,12 +30,12 @@ variable "db_name" {
 
 variable "db_username" {
   type    = string
-  default = ""
+  default = "admin"
 }
 
 variable "db_password" {
   type    = string
-  default = ""
+  default = "password"
 }
 
 variable "db_multi_az" {
@@ -109,6 +109,20 @@ variable "subnet_group_name" {
   type        = string
   default     = "db-subnet-group"
 }
+
+#variable "db_preferred_backup_window" {
+#  type    = string
+#  default = "22:00-23:00"
+#}
+#
+#variable "db_preferred_maintenance_window" {
+#  type    = string
+#  default = "sun:03:00-sun:04:00"
+#}
+#variable "db_kms_key_id" {
+#  type    = string
+#  default = ""
+#}
 
 
 resource "aws_security_group" "rds_security_group" {
