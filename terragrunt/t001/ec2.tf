@@ -1,32 +1,50 @@
 # Variables
 
 variable "ami" {
-  type    = string
-  default = "ami-06e46074ae430fba6"
+  type        = string
+  description = "The ID of the AMI to use for the instance."
+  default     = "ami-06e46074ae430fba6"
 }
 
 variable "instance_type" {
-  type    = string
-  default = "t2.micro"
+  type        = string
+  description = "The instance type to launch."
+  default     = "t2.micro"
 }
 
 variable "key_name" {
-  type    = string
-  default = ""
+  type        = string
+  description = "The name of the EC2 key pair to associate with the instance."
+  default     = ""
 }
 
 variable "instance_name" {
-  type    = string
-  default = "ec2-instance"
+  type        = string
+  description = "The name of the EC2 instance"
+  default     = "ec2-instance"
 }
 
 variable "volume_size" {
-  type    = number
-  default = 8
+  type        = number
+  description = "The size of the root volume in GB."
+  default     = 8
 }
 
+#variable "terraform_version" {
+#  type        = string
+#  description = "The version of Terraform to use."
+#  default     = "v1.0.6"
+#}
+#
+#variable "terragrunt_version" {
+#  type        = string
+#  description = "The version of Terragrunt to use."
+#  default     = "v0.34.1"
+#}
+
+
 variable "ingress_rules" {
-  type    = list(object({
+  type = list(object({
     from_port   = number
     to_port     = number
     protocol    = string
@@ -40,6 +58,7 @@ variable "ingress_rules" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
+  description = "A list of ingress rules to apply to the EC2 instance's security group."
 }
 
 
@@ -61,6 +80,10 @@ resource "aws_instance" "ec2_instance" {
 
   tags = {
     Name = var.instance_name
+    #terraform_version  = var.terraform_version
+    #terragrunt_version = var.terragrunt_version
+    terraform_version  = terraform.version
+    terragrunt_version = terragrunt_version()
   }
 }
 
@@ -88,4 +111,3 @@ resource "aws_security_group" "ec2_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
