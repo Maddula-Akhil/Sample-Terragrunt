@@ -23,7 +23,7 @@ variable "subnet_c_az" {
 
 variable "app_name" {
   type    = string
-  default = "vlgx"
+  default = "New Project"
 }
 
 variable "env" {
