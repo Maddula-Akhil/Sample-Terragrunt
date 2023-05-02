@@ -2,26 +2,26 @@
 
 variable "region" {
   type        = string
-  description = "A string representing the region to deploy the infrastructure in. The default value is set to us-east-1"
+  description = "A string representing the AWS region in which the infrastructure is being deployed. The default value is set to us-east-1"
   default     = "us-east-1"
 }
 
 
 variable "subnet_a_az" {
   type        = string
-  description = "A string representing the availability zone for the public subnet A. The default value is set to us-east-1a"
+  description = "A string representing the availability zone for the public_a and private_a subnets. The default value is set to us-east-1a"
   default     = "us-east-1a"
 }
 
 variable "subnet_b_az" {
   type        = string
-  description = "A string representing the availability zone for the public subnet B. The default value is set to us-east-1b"
+  description = "A string representing the availability zone for the public_b and private_b subnets. The default value is set to us-east-1b"
   default     = "us-east-1b"
 }
 
 variable "subnet_c_az" {
   type        = string
-  description = "A string representing the availability zone for the public subnet C. The default value is set to us-east-1c"
+  description = "A string representing the availability zone for the public_c and private_c subnets. The default value is set to us-east-1c"
   default     = "us-east-1c"
 }
 
