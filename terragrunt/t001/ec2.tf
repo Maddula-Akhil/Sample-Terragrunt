@@ -79,7 +79,7 @@ resource "aws_instance" "ec2_instance" {
   }
 
   tags = {
-    Name = var.instance_name
+    Name               = var.instance_name
     terraform_version  = var.terraform_version
     terragrunt_version = var.terragrunt_version
   }
@@ -109,3 +109,4 @@ resource "aws_security_group" "ec2_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+

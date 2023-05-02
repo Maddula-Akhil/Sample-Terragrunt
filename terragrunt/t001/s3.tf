@@ -2,11 +2,13 @@
 variable "private_bucket_1_name" {
   type    = string
   default = "storage-bucket-promact"
+  description = "The name of the first private S3 bucket to create."
 }
 
 variable "private_bucket_2_name" {
   type    = string
   default = "static-site-bucket-promact"
+  description = "The name of the second private S3 bucket to create."
 }
 
 variable "terraform_version" {
