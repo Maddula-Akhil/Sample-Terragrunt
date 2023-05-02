@@ -6,9 +6,12 @@
 
 This repository contains the following resources that are provisioned and managed using AWS, Terraform, and Terragrunt:
 
-1. Resource 1
-2. Resource 2
-3. Resource 3
+1. AWS VPC with 3 public and 3 private subnets 
+2. ECS Cluster - Backend
+3. S3 - Static site hosting
+4. Cloudfront - CDN with S3 Static site
+5. S3 - Storage
+6. RDS
 
 ## Resource 1
 
