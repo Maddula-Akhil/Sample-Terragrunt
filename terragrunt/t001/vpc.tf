@@ -66,6 +66,17 @@ variable "private_subnet_c_cidr" {
   default = "10.0.160.0/19"
 }
 
+variable "terraform_version" {
+  type        = string
+  description = "The version of Terraform to use."
+  default     = "v1.0.6"
+}
+
+variable "terragrunt_version" {
+  type        = string
+  description = "The version of Terragrunt to use."
+  default     = "v0.34.1"
+}
 
 
 #Resources
@@ -77,6 +88,8 @@ resource "aws_vpc" "primary_vpc" {
 
   tags = {
     Name = var.app_name
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -87,6 +100,8 @@ resource "aws_internet_gateway" "primary_igw" {
 
   tags = {
     Name = "${var.app_name}_igw"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -100,6 +115,8 @@ resource "aws_subnet" "public_a" {
 
   tags = {
     Name = "${var.app_name}_public_subnet_a"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -111,6 +128,8 @@ resource "aws_subnet" "public_b" {
 
   tags = {
     Name = "${var.app_name}_public_subnet_b"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -122,6 +141,8 @@ resource "aws_subnet" "public_c" {
 
   tags = {
     Name = "${var.app_name}_public_subnet_c"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -135,6 +156,8 @@ resource "aws_subnet" "private_a" {
 
   tags = {
     Name = "${var.app_name}_private_subnet_a"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -146,6 +169,8 @@ resource "aws_subnet" "private_b" {
 
   tags = {
     Name = "${var.app_name}_private_subnet_b"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -157,6 +182,8 @@ resource "aws_subnet" "private_c" {
 
   tags = {
     Name = "${var.app_name}_private_subnet_c"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -172,6 +199,8 @@ resource "aws_route_table" "public_route" {
 
   tags = {
     Name = "${var.app_name}_public_route"
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 

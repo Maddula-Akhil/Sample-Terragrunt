@@ -30,17 +30,17 @@ variable "volume_size" {
   default     = 8
 }
 
-#variable "terraform_version" {
-#  type        = string
-#  description = "The version of Terraform to use."
-#  default     = "v1.0.6"
-#}
-#
-#variable "terragrunt_version" {
-#  type        = string
-#  description = "The version of Terragrunt to use."
-#  default     = "v0.34.1"
-#}
+variable "terraform_version" {
+  type        = string
+  description = "The version of Terraform to use."
+  default     = "v1.0.6"
+}
+
+variable "terragrunt_version" {
+  type        = string
+  description = "The version of Terragrunt to use."
+  default     = "v0.34.1"
+}
 
 
 variable "ingress_rules" {
@@ -80,10 +80,8 @@ resource "aws_instance" "ec2_instance" {
 
   tags = {
     Name = var.instance_name
-    #terraform_version  = var.terraform_version
-    #terragrunt_version = var.terragrunt_version
-    terraform_version  = terraform.version
-    terragrunt_version = terragrunt_version()
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
   }
 }
 

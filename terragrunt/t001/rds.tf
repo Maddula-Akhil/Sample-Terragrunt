@@ -62,10 +62,8 @@ variable "db_tags" {
   type        = map(string)
   description = "A map of tags to assign to the RDS instance."
   default = {
-    #terraform_version  = terraform.version
-    #terragrunt_version = terragrunt_version()
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
+    "terraform_version"  = "v1.0.6"
+    "terragrunt_version" = "v0.34.1"
   }
 }
 
@@ -145,19 +143,6 @@ variable "subnet_group_name" {
 #  description = ""
 #  default     = ""
 #}
-
-variable "terraform_version" {
-  type        = string
-  description = "The version of Terraform to use."
-  default     = "v1.0.6"
-}
-
-variable "terragrunt_version" {
-  type        = string
-  description = "The version of Terragrunt to use."
-  default     = "v0.34.1"
-}
-
 
 resource "aws_security_group" "rds_security_group" {
   name_prefix = "rds-sg"

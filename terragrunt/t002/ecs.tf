@@ -23,7 +23,7 @@ variable "instance_type" {
 variable "backend_ecr_repository_url" {
   type        = string
   description = "URL of the ECR repository where the Docker image for the ECS tasks is stored"
-  default     = "006498139126.dkr.ecr.us-east-1.amazonaws.com/node:latest"
+  default     = ""
 }
 
 
