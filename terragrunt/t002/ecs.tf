@@ -87,11 +87,27 @@ variable "sg_tags" {
   description = "A map of tags to add to the security group"
 }
 
+variable "terraform_version" {
+  type        = string
+  description = "The version of Terraform to use."
+  default     = "v1.0.6"
+}
+
+variable "terragrunt_version" {
+  type        = string
+  description = "The version of Terragrunt to use."
+  default     = "v0.34.1"
+}
 
 # Resources
 
 resource "aws_ecs_cluster" "backend_ecs_cluster" {
   name = var.ecs_cluster_name
+
+  tags = {
+    terraform_version  = var.terraform_version
+    terragrunt_version = var.terragrunt_version
+  }
 }
 
 resource "aws_ecs_service" "backend_service" {
