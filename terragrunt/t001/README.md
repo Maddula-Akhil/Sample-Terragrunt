@@ -15,7 +15,7 @@ This repository contains the following resources that are provisioned and manage
 
 ## AWS VPC
 
-Custom VPC configuration for allowing modifications as required
+A Virtual Private Cloud (VPC) is a private, isolated network within the AWS cloud. The VPC created by these Terraform templates includes three public and three private subnets. The public subnets are used for resources that need to be accessible from the internet, such as load balancers, while the private subnets are used for resources that should not be accessible from the internet, such as databases.
 
 ### Variables
 
@@ -35,47 +35,68 @@ Custom VPC configuration for allowing modifications as required
 
 ## AWS Elastic Compute Cloud (EC2)
 
-Description of resource 2.
+Amazon Elastic Compute Cloud (EC2) is a web service that provides resizable compute capacity in the cloud. In this infrastructure, an EC2 instance is used for the backend of the application. The EC2 instance is launched in one of the private subnets created in the VPC, ensuring that it is not directly accessible from the internet.
 
 ### Variables
 
-- `variable_1`: Description of variable 1.
-- `variable_2`: Description of variable 2.
-- `variable_3`: Description of variable 3.
-
+- `ami`: Default = "ami-06e46074ae430fba6"
+- `instance_type`: Default = "t2.micro"
+- `key_name`: Default = ""
+- `instance_name`: Default = "ec2-instance"
+- `volume_size`: Default = "8"
+- `terraform_version`: Default = "v1.0.6"
+- `terragrunt_version`: Default = "v0.34.1"
+- `ingress_rules`: Default from_port   = 22, Default to_port     = 22,  Default protocol    = "tcp", cidr_blocks = ["0.0.0.0/0"]
 ## Relational Database Service (RDS)
 
-Description of resource 3.
+Amazon Relational Database Service (RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. In this infrastructure, an RDS instance is used for storing and accessing the application's data. The RDS instance is launched in one of the private subnets created in the VPC, ensuring that it is not directly accessible from the internet.
 
 ### Variables
 
-- `variable_1`: Description of variable 1.
-- `variable_2`: Description of variable 2.
-- `variable_3`: Description of variable 3.
-
+- `db_instance_identifier`: Default = "db"
+- `db_allocated_storage`: Default = "20"
+- `db_engine`: Default = "mysql"
+- `db_engine_version`: Default = "8.0"
+- `db_instance_class`: Default = "db.t2.micro"
+- `db_name`: Default = "db"
+- `db_username`: Default = ""
+- `db_password`: Default = ""
+- `db_multi_az`: Default = "false"
+- `db_skip_final_snapshot`: Default = "true"
+- `db_tags`: Default terraform_version = "v1.0.6" , Default terragrunt_version = "v0.34.1"
+- `db_backup_retention_period`: Default = "7"
+- `db_copy_tags_to_snapshot`: Default = "true"
+- `db_publicly_accessible`: Default = "false"
+- `cidr_blocks`: Default = "["10.0.0.0/16"]"
+- `from_port`: Default = "0"
+- `to_port`: Default = "0"
+- `protocol`: Default = "-1"
+- `allowed_ports`: Default = "[3306]"
+- `allowed_cidr_blocks`: Default = "["0.0.0.0/0"]"
+- `subnet_group_name`: Default = "db-subnet-group"
 ## AWS Simple Storage Service (S3) - Storage
 
-Description of resource 3.
+In addition to hosting the frontend of the application, an S3 bucket is also used for storing data files such as images, documents, and other assets. This S3 bucket is configured to store data files securely and is accessible only to authorized users.
 
 ### Variables
 
-- `variable_1`: Description of variable 1.
-- `variable_2`: Description of variable 2.
-- `variable_3`: Description of variable 3.
+- `private_bucket_1_name`: Default = "storage-bucket-promact"
+- `terraform_version`: Default = "v1.0.6"
+- `terragrunt_version`: Default = "v0.34.1"
 
 ## AWS Simple Storage Service (S3) - Site Hosting
 
-Description of resource 3.
+Amazon Simple Storage Service (S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. In this infrastructure, an S3 bucket is used for hosting the frontend of the application as a static website. The S3 bucket is configured to serve static content over HTTPS.
 
 ### Variables
 
-- `variable_1`: Description of variable 1.
-- `variable_2`: Description of variable 2.
-- `variable_3`: Description of variable 3.
+- `private_bucket_2_name`: Default = "static-site-bucket-promact"
+- `terraform_version`: Default = "v1.0.6"
+- `terragrunt_version`: Default = "v0.34.1"
 
 ## AWS Cloudfront (CDN)
 
-Description of resource 3.
+Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer-friendly environment. In this infrastructure, a CDN is created in front of the S3 bucket used for hosting the frontend of the application. The CDN improves the performance of the frontend by caching content at edge locations around the world, reducing the time it takes for users to load the site
 
 ### Variables
 
