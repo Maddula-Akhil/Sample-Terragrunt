@@ -98,8 +98,19 @@ Amazon Simple Storage Service (S3) is an object storage service that offers indu
 
 Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer-friendly environment. In this infrastructure, a CDN is created in front of the S3 bucket used for hosting the frontend of the application. The CDN improves the performance of the frontend by caching content at edge locations around the world, reducing the time it takes for users to load the site
 
-### Variables
+## Prerequisites
 
-- `variable_1`: Description of variable 1.
-- `variable_2`: Description of variable 2.
-- `variable_3`: Description of variable 3.
+To use these Terraform templates, you will need the following installed on your local machine:
+
+- Terraform >= 1.0
+- AWS CLI
+
+## Usage
+
+To use these Terraform templates, follow these steps:
+
+- Clone this repository to your local machine.
+- Navigate to the folder containing the Terraform templates in your terminal.
+- Run terraform init to initialize Terraform.
+- Run terraform plan to see a preview of the changes Terraform will make.
+- Run terraform apply to apply the changes and create the AWS infrastructure.
