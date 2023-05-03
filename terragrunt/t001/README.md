@@ -111,6 +111,6 @@ To use these Terraform templates, follow these steps:
 
 - Clone this repository to your local machine.
 - Navigate to the folder containing the Terraform templates in your terminal.
-- Run terraform init to initialize Terraform.
-- Run terraform plan to see a preview of the changes Terraform will make.
-- Run terraform apply to apply the changes and create the AWS infrastructure.
+- Run 'terraform init' to initialize Terraform.
+- Run 'terraform plan' to see a preview of the changes Terraform will make.
+- Run 'terraform apply' to apply the changes and create the AWS infrastructure.
