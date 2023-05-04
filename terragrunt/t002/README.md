@@ -4,6 +4,10 @@
 ![Terraform](https://img.shields.io/badge/Terraform-v1.0.6-brightgreen)
 ![Terragrunt](https://img.shields.io/badge/Terragrunt-v0.34.1-blue)
 
+## Project Title
+
+Description of the project.
+
 This repository contains the following resources that are provisioned and managed using AWS, Terraform, and Terragrunt:
 
 1. AWS VPC with 3 public and 3 private subnets 
