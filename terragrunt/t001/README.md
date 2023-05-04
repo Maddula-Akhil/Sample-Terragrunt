@@ -4,7 +4,7 @@
 ![Terraform](https://img.shields.io/badge/Terraform-v1.0.6-brightgreen)
 ![Terragrunt](https://img.shields.io/badge/Terragrunt-v0.34.1-blue)
 
-## Project Title
+# Project Title
 
 Description of the project.
 
