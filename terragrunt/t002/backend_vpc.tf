@@ -78,19 +78,6 @@ variable "backend_private_subnet_c_cidr" {
   default     = "10.1.160.0/19"
 }
 
-variable "terraform_version" {
-  type        = string
-  description = "A string representing the version of Terraform to use. The default value is set to v1.0.6"
-  default     = "v1.0.6"
-}
-
-variable "terragrunt_version" {
-  type        = string
-  description = "A string representing the version of Terragrunt to use. The default value is set to v0.34.1"
-  default     = "v0.34.1"
-}
-
-
 # Resources
 
 resource "aws_vpc" "backend_vpc" {
@@ -100,8 +87,6 @@ resource "aws_vpc" "backend_vpc" {
 
   tags = {
     Name               = "${var.backend_app_name}-${var.backend_env}-vpc"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -112,8 +97,6 @@ resource "aws_internet_gateway" "backend_igw" {
 
   tags = {
     Name               = "${var.backend_app_name}-igw"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -127,8 +110,6 @@ resource "aws_subnet" "backend_public_a" {
 
   tags = {
     Name               = "${var.backend_app_name}-${var.backend_env}-public-subnet-a"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -140,8 +121,6 @@ resource "aws_subnet" "backend_public_b" {
 
   tags = {
     Name               = "${var.backend_app_name}-${var.backend_env}-public-subnet-b"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -153,8 +132,6 @@ resource "aws_subnet" "backend_public_c" {
 
   tags = {
     Name               = "${var.backend_app_name}-${var.backend_env}-public-subnet-c"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -168,8 +145,6 @@ resource "aws_subnet" "backend_private_a" {
 
   tags = {
     Name               = "${var.backend_app_name}-${var.backend_env}-private-subnet-a"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -181,8 +156,6 @@ resource "aws_subnet" "backend_private_b" {
 
   tags = {
     Name               = "${var.backend_app_name}-${var.backend_env}-private-subnet-b"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -195,8 +168,6 @@ resource "aws_subnet" "backend_private_c" {
 
   tags = {
     Name               = "${var.backend_app_name}-${var.backend_env}-private-subnet-c"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 
@@ -212,8 +183,6 @@ resource "aws_route_table" "backend_public_route" {
 
   tags = {
     Name               = "${var.backend_app_name}-public-route"
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
   }
 }
 

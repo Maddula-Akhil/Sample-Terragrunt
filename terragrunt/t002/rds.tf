@@ -62,8 +62,8 @@ variable "db_tags" {
   type        = map(string)
   description = "A map of tags to assign to the RDS instance."
   default = {
-    "terraform_version"  = "v1.0.6"
-    "terragrunt_version" = "v0.34.1"
+    #"terraform_version"  = "v1.0.6"
+    #"terragrunt_version" = "v0.34.1"
   }
 }
 

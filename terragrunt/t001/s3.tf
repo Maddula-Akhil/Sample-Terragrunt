@@ -11,27 +11,11 @@ variable "private_bucket_2_name" {
   description = "The name of the second private S3 bucket to create."
 }
 
-variable "terraform_version" {
-  type        = string
-  description = "The version of Terraform to use."
-  default     = "v1.0.6"
-}
-
-variable "terragrunt_version" {
-  type        = string
-  description = "The version of Terragrunt to use."
-  default     = "v0.34.1"
-}
 
 # The bucket storage_bucket is connected to CloudFront.
 
 resource "aws_s3_bucket" "storage_bucket" {
   bucket = var.private_bucket_1_name
- 
-  tags = {
-    terraform_version = var.terraform_version
-    terragrunt_version = var.terragrunt_version
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "storage_bucket_access" {
@@ -48,11 +32,6 @@ resource "aws_s3_bucket_public_access_block" "storage_bucket_access" {
 
 resource "aws_s3_bucket" "static_site_bucket" {
   bucket = var.private_bucket_2_name
-
-  tags = {
-    terraform_version = var.terraform_version
-    terragrunt_version = var.terragrunt_version
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "static_site_bucket_access" {
@@ -110,9 +89,5 @@ resource "aws_cloudfront_distribution" "storage_bucket_cloudfront" {
 
   price_class = "PriceClass_100"
 
-  tags = {
-    terraform_version  = var.terraform_version
-    terragrunt_version = var.terragrunt_version
-  }
 }
 
