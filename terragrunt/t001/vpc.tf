@@ -170,7 +170,9 @@ resource "aws_subnet" "private_b" {
 
   tags = {
     Name               = "${var.app_name}_private_subnet_b"
+  }
 }
+
 
 resource "aws_subnet" "private_c" {
   vpc_id                  = aws_vpc.primary_vpc.id
@@ -180,6 +182,7 @@ resource "aws_subnet" "private_c" {
 
   tags = {
     Name               = "${var.app_name}_private_subnet_c"
+  }
 }
 
 # Custom route table entry for custom VPC
