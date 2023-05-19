@@ -61,7 +61,7 @@ variable "db_skip_final_snapshot" {
 variable "db_tags" {
   type        = map(string)
   description = "A map of tags to assign to the RDS instance."
-  default = ""
+  default = {}
 }
 
 variable "db_backup_retention_period" {
