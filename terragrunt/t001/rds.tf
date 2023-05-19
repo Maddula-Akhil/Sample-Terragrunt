@@ -43,7 +43,7 @@ variable "db_username" {
 variable "db_password" {
   type        = string
   description = "The password to use when connecting to the RDS instance."
-  default     = ""
+  default     = "admin123"
 }
 
 variable "db_multi_az" {
