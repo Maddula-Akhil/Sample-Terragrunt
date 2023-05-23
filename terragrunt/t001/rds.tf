@@ -37,13 +37,13 @@ variable "db_name" {
 variable "db_username" {
   type        = string
   description = "The username to use when connecting to the RDS instance."
-  default     = "admin"
+  default     = "yanki-db"
 }
 
 variable "db_password" {
   type        = string
   description = "The password to use when connecting to the RDS instance."
-  default     = "admin123"
+  default     = "YankiDB23052023"
 }
 
 variable "db_multi_az" {
@@ -61,7 +61,7 @@ variable "db_skip_final_snapshot" {
 variable "db_tags" {
   type        = map(string)
   description = "A map of tags to assign to the RDS instance."
-  default = {}
+  default     = {}
 }
 
 variable "db_backup_retention_period" {
@@ -183,7 +183,7 @@ resource "aws_db_instance" "db_instance" {
   engine                  = var.db_engine
   engine_version          = var.db_engine_version
   instance_class          = var.db_instance_class
-  name                    = var.db_name
+  db_name                 = var.db_name
   username                = var.db_username
   password                = var.db_password
   db_subnet_group_name    = aws_db_subnet_group.db_subnet_group.name
