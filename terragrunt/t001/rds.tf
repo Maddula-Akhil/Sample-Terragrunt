@@ -37,13 +37,13 @@ variable "db_name" {
 #variable "db_username" {
 #  type        = string
 #  description = "The username to use when connecting to the RDS instance."
-# default     = "yanki-db"
+# default     = "akhil_db"
 #}
 
 #variable "db_password" {
 #  type        = string
 #  description = "The password to use when connecting to the RDS instance."
-#  default     = "YankiDB23052023"
+#  default     = "akhil_dbW123456W"
 #}
 
 variable "db_multi_az" {
